@@ -1,0 +1,162 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "language": "Language",
+    "english": "English",
+    "french": "French"
+  },
+  "navigation": {
+    "home": "Home",
+    "coverLetters": "Cover Letters",
+    "resumeTips": "Resume Tips",
+    "jobSearch": "Job Search",
+    "pricing": "Pricing",
+    "profile": "Profile",
+    "login": "Login",
+    "signup": "Sign Up",
+    "logout": "Logout"
+  },
+  "home": {
+    "hero": {
+      "title": "Your Complete Job Application Assistant",
+      "subtitle": "Create professional cover letters, get resume tips, and land your dream job with AI-powered assistance",
+      "cta": "Get Started Free",
+      "learnMore": "Learn More"
+    },
+    "features": {
+      "coverLetters": {
+        "title": "AI-Powered Cover Letters",
+        "description": "Generate personalized cover letters tailored to your experience and the job requirements"
+      },
+      "resumeTips": {
+        "title": "Resume Optimization",
+        "description": "Get expert tips to make your resume stand out and pass ATS systems"
+      },
+      "jobSearch": {
+        "title": "Job Search Tools",
+        "description": "Find relevant job opportunities and track your applications"
+      },
+      "templates": {
+        "title": "Professional Templates",
+        "description": "Choose from industry-specific templates designed by HR professionals"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Choose Your Plan",
+    "subtitle": "Start free, upgrade when you need more",
+    "free": {
+      "title": "Free",
+      "price": "$0",
+      "period": "forever",
+      "features": [
+        "3 cover letters per month",
+        "Basic resume tips",
+        "5 job search queries",
+        "Standard templates"
+      ]
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "$9.99",
+      "period": "per month",
+      "features": [
+        "Unlimited cover letters",
+        "Advanced resume analysis",
+        "Unlimited job searches",
+        "Premium templates",
+        "Priority support",
+        "Export to PDF"
+      ],
+      "popular": "Most Popular"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "price": "$29.99",
+      "period": "per month",
+      "features": [
+        "Everything in Pro",
+        "Team collaboration",
+        "Custom branding",
+        "API access",
+        "Dedicated support",
+        "Analytics dashboard"
+      ]
+    }
+  },
+  "coverLetter": {
+    "title": "Create Your Cover Letter",
+    "form": {
+      "jobTitle": "Job Title",
+      "company": "Company Name",
+      "yourName": "Your Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "experience": "Years of Experience",
+      "skills": "Key Skills",
+      "achievements": "Key Achievements",
+      "motivation": "Why you want this job",
+      "generate": "Generate Cover Letter",
+      "regenerate": "Regenerate",
+      "download": "Download PDF"
+    },
+    "preview": {
+      "title": "Cover Letter Preview",
+      "edit": "Edit Content"
+    }
+  },
+  "resume": {
+    "title": "Resume Tips & Optimization",
+    "sections": {
+      "summary": "Professional Summary",
+      "experience": "Work Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "ats": "ATS Optimization"
+    },
+    "tips": {
+      "title": "Expert Tips",
+      "keywords": "Use relevant keywords",
+      "actionVerbs": "Start with action verbs",
+      "quantify": "Quantify achievements",
+      "format": "Keep it clean and readable"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot Password?",
+      "noAccount": "Don't have an account?",
+      "signup": "Sign up"
+    },
+    "signup": {
+      "title": "Create Account",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "agree": "I agree to the terms and conditions",
+      "hasAccount": "Already have an account?",
+      "login": "Log in"
+    }
+  },
+  "profile": {
+    "title": "Profile Settings",
+    "personalInfo": "Personal Information",
+    "subscription": "Subscription",
+    "usage": "Usage Statistics",
+    "settings": "Settings"
+  }
+}

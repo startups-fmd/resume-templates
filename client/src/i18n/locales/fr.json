@@ -1,0 +1,162 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "submit": "Soumettre",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "language": "Langue",
+    "english": "Anglais",
+    "french": "Français"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "coverLetters": "Lettres de Motivation",
+    "resumeTips": "Conseils CV",
+    "jobSearch": "Recherche d'Emploi",
+    "pricing": "Tarifs",
+    "profile": "Profil",
+    "login": "Connexion",
+    "signup": "S'inscrire",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "hero": {
+      "title": "Votre Assistant Complet de Candidature",
+      "subtitle": "Créez des lettres de motivation professionnelles, obtenez des conseils pour votre CV et décrochez votre emploi de rêve avec l'assistance IA",
+      "cta": "Commencer Gratuitement",
+      "learnMore": "En Savoir Plus"
+    },
+    "features": {
+      "coverLetters": {
+        "title": "Lettres de Motivation IA",
+        "description": "Générez des lettres de motivation personnalisées adaptées à votre expérience et aux exigences du poste"
+      },
+      "resumeTips": {
+        "title": "Optimisation de CV",
+        "description": "Obtenez des conseils d'experts pour faire ressortir votre CV et passer les systèmes ATS"
+      },
+      "jobSearch": {
+        "title": "Outils de Recherche",
+        "description": "Trouvez des opportunités d'emploi pertinentes et suivez vos candidatures"
+      },
+      "templates": {
+        "title": "Modèles Professionnels",
+        "description": "Choisissez parmi des modèles spécifiques à l'industrie conçus par des professionnels RH"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Choisissez Votre Plan",
+    "subtitle": "Commencez gratuitement, améliorez quand vous en avez besoin",
+    "free": {
+      "title": "Gratuit",
+      "price": "0€",
+      "period": "pour toujours",
+      "features": [
+        "3 lettres de motivation par mois",
+        "Conseils CV de base",
+        "5 recherches d'emploi",
+        "Modèles standard"
+      ]
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "9,99€",
+      "period": "par mois",
+      "features": [
+        "Lettres de motivation illimitées",
+        "Analyse avancée de CV",
+        "Recherches d'emploi illimitées",
+        "Modèles premium",
+        "Support prioritaire",
+        "Export PDF"
+      ],
+      "popular": "Le Plus Populaire"
+    },
+    "enterprise": {
+      "title": "Entreprise",
+      "price": "29,99€",
+      "period": "par mois",
+      "features": [
+        "Tout ce qui est inclus dans Pro",
+        "Collaboration d'équipe",
+        "Marque personnalisée",
+        "Accès API",
+        "Support dédié",
+        "Tableau de bord analytique"
+      ]
+    }
+  },
+  "coverLetter": {
+    "title": "Créez Votre Lettre de Motivation",
+    "form": {
+      "jobTitle": "Titre du Poste",
+      "company": "Nom de l'Entreprise",
+      "yourName": "Votre Nom Complet",
+      "email": "Adresse Email",
+      "phone": "Numéro de Téléphone",
+      "experience": "Années d'Expérience",
+      "skills": "Compétences Clés",
+      "achievements": "Réalisations Clés",
+      "motivation": "Pourquoi vous voulez ce poste",
+      "generate": "Générer la Lettre",
+      "regenerate": "Régénérer",
+      "download": "Télécharger PDF"
+    },
+    "preview": {
+      "title": "Aperçu de la Lettre",
+      "edit": "Modifier le Contenu"
+    }
+  },
+  "resume": {
+    "title": "Conseils et Optimisation de CV",
+    "sections": {
+      "summary": "Résumé Professionnel",
+      "experience": "Expérience Professionnelle",
+      "education": "Formation",
+      "skills": "Compétences",
+      "ats": "Optimisation ATS"
+    },
+    "tips": {
+      "title": "Conseils d'Expert",
+      "keywords": "Utilisez des mots-clés pertinents",
+      "actionVerbs": "Commencez par des verbes d'action",
+      "quantify": "Quantifiez les réalisations",
+      "format": "Gardez-le propre et lisible"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bon Retour",
+      "email": "Email",
+      "password": "Mot de Passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signup": "S'inscrire"
+    },
+    "signup": {
+      "title": "Créer un Compte",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "password": "Mot de Passe",
+      "confirmPassword": "Confirmer le Mot de Passe",
+      "agree": "J'accepte les conditions d'utilisation",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "login": "Se connecter"
+    }
+  },
+  "profile": {
+    "title": "Paramètres du Profil",
+    "personalInfo": "Informations Personnelles",
+    "subscription": "Abonnement",
+    "usage": "Statistiques d'Utilisation",
+    "settings": "Paramètres"
+  }
+}
