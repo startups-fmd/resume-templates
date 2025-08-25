@@ -77,18 +77,18 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Health check endpoint
-app.get('/api/health', (req, res) => {
+app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
 // API routes
-app.use('/api/auth', authRoutes);
-app.use('/api/cover-letter', coverLetterRoutes);
-app.use('/api/resume', resumeRoutes);
-app.use('/api/job-tracker', jobTrackerRoutes);
-app.use('/api/subscription', subscriptionRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/stripe', stripeRoutes);
+app.use('/auth', authRoutes);
+app.use('/cover-letter', coverLetterRoutes);
+app.use('/resume', resumeRoutes);
+app.use('/job-tracker', jobTrackerRoutes);
+app.use('/subscription', subscriptionRoutes);
+app.use('/user', userRoutes);
+app.use('/stripe', stripeRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {
