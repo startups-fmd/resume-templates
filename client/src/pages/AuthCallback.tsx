@@ -7,12 +7,12 @@ import { Loader2, CheckCircle, XCircle } from 'lucide-react';
 const AuthCallback: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { updateUser } = useAuth();
+  const { setAuthTokens } = useAuth();
   
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [message, setMessage] = useState('');
 
-  const fetchUserData = useCallback(async (token: string) => {
+  const fetchUserData = useCallback(async (token: string, refreshToken: string) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/me`, {
         headers: {
@@ -23,7 +23,10 @@ const AuthCallback: React.FC = () => {
 
       if (response.ok) {
         const data = await response.json();
-        updateUser(data.data.user);
+        
+        // Set the auth tokens and user data
+        setAuthTokens(token, refreshToken, data.data.user);
+        
         setStatus('success');
         setMessage('Authentication successful! Redirecting...');
         setTimeout(() => {
@@ -39,7 +42,7 @@ const AuthCallback: React.FC = () => {
         navigate('/login');
       }, 3000);
     }
-  }, [updateUser, navigate]);
+  }, [setAuthTokens, navigate]);
 
   useEffect(() => {
     const token = searchParams.get('token');
@@ -56,12 +59,8 @@ const AuthCallback: React.FC = () => {
     }
 
     if (token && refreshToken) {
-      // Store tokens
-      localStorage.setItem('token', token);
-      localStorage.setItem('refreshToken', refreshToken);
-
       // Fetch user data
-      fetchUserData(token);
+      fetchUserData(token, refreshToken);
     } else {
       setStatus('error');
       setMessage('Invalid authentication response.');

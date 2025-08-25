@@ -40,6 +40,7 @@ interface AuthContextType extends AuthState {
   refreshAuth: () => Promise<void>;
   clearError: () => void;
   updateUser: (userData: Partial<User>) => void;
+  setAuthTokens: (token: string, refreshToken: string, user: User) => void;
 }
 
 interface RegisterData {
@@ -57,7 +58,8 @@ type AuthAction =
   | { type: 'LOGOUT' }
   | { type: 'CLEAR_ERROR' }
   | { type: 'UPDATE_USER'; payload: Partial<User> }
-  | { type: 'SET_LOADING'; payload: boolean };
+  | { type: 'SET_LOADING'; payload: boolean }
+  | { type: 'SET_AUTH_TOKENS'; payload: { user: User; token: string; refreshToken: string } };
 
 // Initial state
 const initialState: AuthState = {
@@ -122,6 +124,16 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case 'SET_AUTH_TOKENS':
+      return {
+        ...state,
+        user: action.payload.user,
+        token: action.payload.token,
+        refreshToken: action.payload.refreshToken,
+        isAuthenticated: true,
+        isLoading: false,
+        error: null,
       };
     default:
       return state;
@@ -274,6 +286,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     toast.success(t('auth.logoutSuccess'));
   };
 
+  // Set auth tokens (for OAuth)
+  const setAuthTokens = (token: string, refreshToken: string, user: User) => {
+    dispatch({
+      type: 'SET_AUTH_TOKENS',
+      payload: { user, token, refreshToken },
+    });
+  };
+
   // Refresh authentication
   const refreshAuth = async () => {
     const refreshToken = localStorage.getItem('refreshToken');
@@ -319,6 +339,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     refreshAuth,
     clearError,
     updateUser,
+    setAuthTokens,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
