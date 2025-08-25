@@ -386,6 +386,7 @@ router.get('/google/callback',
       // Redirect to frontend with tokens
       const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
       console.log('CLIENT_URL from env:', process.env.CLIENT_URL);
+      console.log('Using clientUrl:', clientUrl);
       console.log('Redirecting to:', `${clientUrl}/auth/callback?token=${token}&refreshToken=${refreshToken}`);
       const redirectUrl = `${clientUrl}/auth/callback?token=${token}&refreshToken=${refreshToken}`;
       res.redirect(redirectUrl);
