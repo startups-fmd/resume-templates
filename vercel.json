@@ -1,8 +1,24 @@
 {
   "rewrites": [
     {
-      "source": "/auth/callback",
+      "source": "/oauth-success",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "headers": [
+    {
+      "source": "/oauth-success",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "app/auth/callback": {
+      "maxDuration": 30
+    }
+  }
 }

@@ -387,8 +387,8 @@ router.get('/google/callback',
       const clientUrl = process.env.CLIENT_URL || 'http://localhost:3000';
       console.log('CLIENT_URL from env:', process.env.CLIENT_URL);
       console.log('Using clientUrl:', clientUrl);
-      console.log('Redirecting to:', `${clientUrl}/auth/callback?token=${token}&refreshToken=${refreshToken}`);
-      const redirectUrl = `${clientUrl}/auth/callback?token=${token}&refreshToken=${refreshToken}`;
+      console.log('Redirecting to:', `${clientUrl}/oauth-success?token=${token}&refreshToken=${refreshToken}`);
+      const redirectUrl = `${clientUrl}/oauth-success?token=${token}&refreshToken=${refreshToken}`;
       res.redirect(redirectUrl);
 
     } catch (error) {

@@ -80,7 +80,7 @@ const AppRoutes: React.FC = () => {
             </PublicRoute>
           } 
         />
-        <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route path="/oauth-success" element={<AuthCallback />} />
 
         {/* Protected Routes */}
         <Route 
