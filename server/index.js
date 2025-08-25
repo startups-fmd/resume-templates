@@ -32,7 +32,11 @@ app.set('trust proxy', 1);
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: [
+    process.env.CLIENT_URL || 'http://localhost:3000',
+    'https://resume-templates-eta.vercel.app',
+    'https://resume-templates-git-main-mohamads-projects-3a650d29.vercel.app'
+  ],
   credentials: true
 }));
 
