@@ -145,6 +145,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // API base URL
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+console.log('API_BASE_URL:', API_BASE_URL);
 
 // API helper function
 const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
@@ -159,7 +160,9 @@ const apiRequest = async (endpoint: string, options: RequestInit = {}) => {
     ...options,
   };
 
-  const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+  const fullUrl = `${API_BASE_URL}${endpoint}`;
+  console.log('Making request to:', fullUrl);
+  const response = await fetch(fullUrl, config);
   const data = await response.json();
 
   if (!response.ok) {
