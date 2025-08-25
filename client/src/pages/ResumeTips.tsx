@@ -209,11 +209,8 @@ const ResumeTips: React.FC = () => {
         formData.append('jobDescription', jobDescription);
       }
 
-      // Debug: Log the environment variable
-      console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
-      
-      // Use the backend URL directly since environment variable might not be set
-      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'https://motivai-backend.onrender.com/api';
+      // Use relative URLs for Vercel deployment
+      const API_BASE_URL = '/api';
       
       console.log('API_BASE_URL:', API_BASE_URL);
       console.log('Full URL:', `${API_BASE_URL}/resume/analyze`);
@@ -267,8 +264,8 @@ const ResumeTips: React.FC = () => {
 
     setIsLoadingTemplate(true);
     try {
-      // Use the backend URL directly since environment variable might not be set
-      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'https://motivai-backend.onrender.com/api';
+      // Use relative URLs for Vercel deployment
+      const API_BASE_URL = '/api';
       const response = await fetch(`${API_BASE_URL}/resume/templates/${template.id}/preview`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -304,8 +301,8 @@ const ResumeTips: React.FC = () => {
     }
 
     try {
-      // Use the backend URL directly since environment variable might not be set
-      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'https://motivai-backend.onrender.com/api';
+      // Use relative URLs for Vercel deployment
+      const API_BASE_URL = '/api';
       const response = await fetch(`${API_BASE_URL}/resume/templates/${template.id}/download`, {
         method: 'POST',
         headers: {

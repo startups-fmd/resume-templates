@@ -78,7 +78,7 @@ const Login: React.FC = () => {
 
   const handleGoogleLogin = () => {
     // Redirect to Google OAuth
-    window.location.href = `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/google`;
+    window.location.href = '/api/auth/google';
   };
 
   return (

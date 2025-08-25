@@ -14,7 +14,7 @@ const AuthCallback: React.FC = () => {
 
   const fetchUserData = useCallback(async (token: string, refreshToken: string) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/me`, {
+      const response = await fetch('/api/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',

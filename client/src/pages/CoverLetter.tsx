@@ -118,8 +118,8 @@ const CoverLetter: React.FC = () => {
       console.log('User Agent:', navigator.userAgent);
       console.log('Current URL:', window.location.href);
       
-      // Use the backend URL directly since environment variable might not be set
-      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'https://motivai-backend.onrender.com/api';
+      // Use relative URLs for Vercel deployment
+      const API_BASE_URL = '/api';
       
       console.log('API_BASE_URL:', API_BASE_URL);
       console.log('Full URL:', `${API_BASE_URL}/cover-letter/generate`);
