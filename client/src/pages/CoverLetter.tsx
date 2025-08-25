@@ -115,12 +115,15 @@ const CoverLetter: React.FC = () => {
 
       // Debug: Log the environment variable
       console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
+      console.log('User Agent:', navigator.userAgent);
+      console.log('Current URL:', window.location.href);
       
       // Use the backend URL directly since environment variable might not be set
       const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'https://motivai-backend.onrender.com/api';
       
       console.log('API_BASE_URL:', API_BASE_URL);
       console.log('Full URL:', `${API_BASE_URL}/cover-letter/generate`);
+      console.log('Token exists:', !!localStorage.getItem('token'));
       const response = await fetch(`${API_BASE_URL}/cover-letter/generate`, {
         method: 'POST',
         headers: {
@@ -149,7 +152,26 @@ const CoverLetter: React.FC = () => {
       toast.success('Cover letter generated successfully!');
     } catch (error: any) {
       console.error('Cover letter generation error:', error);
-      toast.error(error.message || 'Failed to generate cover letter');
+      console.error('Error details:', {
+        name: error.name,
+        message: error.message,
+        stack: error.stack
+      });
+      
+      let errorMessage = 'Failed to generate cover letter';
+      if (error.message.includes('Failed to fetch')) {
+        errorMessage = 'Network error: Unable to connect to server. Please check your internet connection.';
+      } else if (error.message.includes('401')) {
+        errorMessage = 'Authentication error: Please log in again.';
+      } else if (error.message.includes('403')) {
+        errorMessage = 'Access denied: You may have reached your usage limit.';
+      } else if (error.message.includes('500')) {
+        errorMessage = 'Server error: Please try again later.';
+      } else {
+        errorMessage = error.message || 'Failed to generate cover letter';
+      }
+      
+      toast.error(errorMessage);
     } finally {
       setIsGenerating(false);
     }
