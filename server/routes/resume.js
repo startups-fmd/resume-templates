@@ -24,7 +24,7 @@ try {
 // Configure multer for resume uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = 'uploads/resumes';
+    const uploadDir = path.join(__dirname, '../uploads/resumes');
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
@@ -202,7 +202,17 @@ router.post('/analyze', [
 
   } catch (error) {
     console.error('Resume analysis error:', error);
-    res.status(500).json({ message: 'Server error' });
+    
+    // Provide more specific error messages
+    if (error.message.includes('OpenAI')) {
+      res.status(500).json({ message: 'AI analysis service is currently unavailable. Please try again later.' });
+    } else if (error.message.includes('file')) {
+      res.status(400).json({ message: 'Error processing uploaded file. Please try a different file format.' });
+    } else if (error.message.includes('validation')) {
+      res.status(400).json({ message: 'Invalid input. Please check your resume content and try again.' });
+    } else {
+      res.status(500).json({ message: 'Analysis failed. Please try again.' });
+    }
   }
 });
 
@@ -541,7 +551,21 @@ Please provide your analysis in the following JSON format:
 
   } catch (error) {
     console.error('OpenAI API error:', error);
-    // Fallback to basic analysis
+    
+    // Check if it's an API key issue
+    if (error.message.includes('API key') || error.message.includes('authentication')) {
+      console.error('OpenAI API key issue detected');
+      throw new Error('OpenAI API key is invalid or missing');
+    }
+    
+    // Check if it's a rate limit issue
+    if (error.message.includes('rate limit') || error.message.includes('quota')) {
+      console.error('OpenAI rate limit exceeded');
+      throw new Error('OpenAI rate limit exceeded. Please try again later.');
+    }
+    
+    // Fallback to basic analysis for other errors
+    console.log('Falling back to basic analysis due to OpenAI error');
     return analyzeResumeBasic(resumeContent, jobDescription);
   }
 }
