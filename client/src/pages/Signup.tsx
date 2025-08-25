@@ -131,7 +131,7 @@ const Signup: React.FC = () => {
 
   const handleGoogleSignup = () => {
     // Redirect to Google OAuth
-    window.location.href = `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/google`;
+    window.location.href = '/api/auth/google';
   };
 
   const getPasswordStrengthColor = () => {
