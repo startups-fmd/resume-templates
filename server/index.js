@@ -32,11 +32,28 @@ app.set('trust proxy', 1);
 // Security middleware
 app.use(helmet());
 app.use(cors({
-  origin: [
-    process.env.CLIENT_URL || 'http://localhost:3000',
-    'https://resume-templates-eta.vercel.app',
-    'https://resume-templates-git-main-mohamads-projects-3a650d29.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      process.env.CLIENT_URL || 'http://localhost:3000',
+      'https://resume-templates-eta.vercel.app',
+      'https://resume-templates-git-main-mohamads-projects-3a650d29.vercel.app'
+    ];
+    
+    // Allow any Vercel URL
+    if (origin.includes('vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // Check if origin is in allowed list
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
 
