@@ -113,7 +113,8 @@ const CoverLetter: React.FC = () => {
       // Add language
       formDataToSend.append('language', localStorage.getItem('i18nextLng') || 'en');
 
-      const response = await fetch('/api/cover-letter/generate', {
+      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'http://localhost:5000/api';
+      const response = await fetch(`${API_BASE_URL}/cover-letter/generate`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

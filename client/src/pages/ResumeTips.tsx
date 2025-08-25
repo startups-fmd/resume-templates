@@ -209,7 +209,8 @@ const ResumeTips: React.FC = () => {
         formData.append('jobDescription', jobDescription);
       }
 
-      const response = await fetch('/api/resume/analyze', {
+      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'http://localhost:5000/api';
+      const response = await fetch(`${API_BASE_URL}/resume/analyze`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -253,7 +254,8 @@ const ResumeTips: React.FC = () => {
 
     setIsLoadingTemplate(true);
     try {
-      const response = await fetch(`/api/resume/templates/${template.id}/preview`, {
+      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'http://localhost:5000/api';
+      const response = await fetch(`${API_BASE_URL}/resume/templates/${template.id}/preview`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -288,7 +290,8 @@ const ResumeTips: React.FC = () => {
     }
 
     try {
-      const response = await fetch(`/api/resume/templates/${template.id}/download`, {
+      const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api` : 'http://localhost:5000/api';
+      const response = await fetch(`${API_BASE_URL}/resume/templates/${template.id}/download`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
