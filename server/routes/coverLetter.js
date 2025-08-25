@@ -86,10 +86,18 @@ router.post('/generate', [
     }
 
     // Check if user can generate cover letter
-    if (!user.canUseFeature('coverLetters')) {
-      return res.status(403).json({ 
-        message: 'You have reached your cover letter limit. Please upgrade your plan.',
-        limitReached: true
+    try {
+      if (!user.canUseFeature('coverLetters')) {
+        return res.status(403).json({ 
+          message: 'You have reached your cover letter limit. Please upgrade your plan.',
+          limitReached: true
+        });
+      }
+    } catch (error) {
+      console.error('Error checking feature usage:', error);
+      return res.status(500).json({ 
+        message: 'Error checking usage limits. Please try again.',
+        error: error.message
       });
     }
 
@@ -175,7 +183,14 @@ router.post('/generate', [
 
   } catch (error) {
     console.error('Cover letter generation error:', error);
-    res.status(500).json({ message: 'Server error' });
+    
+    // Ensure we always return a proper JSON response
+    if (!res.headersSent) {
+      res.status(500).json({ 
+        message: 'Failed to generate cover letter. Please try again.',
+        error: error.message 
+      });
+    }
   }
 });
 

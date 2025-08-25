@@ -122,16 +122,26 @@ const CoverLetter: React.FC = () => {
         body: formDataToSend
       });
 
-      const data = await response.json();
-
+      // Check if response is ok before trying to parse JSON
       if (!response.ok) {
-        throw new Error(data.message || 'Failed to generate cover letter');
+        let errorMessage = 'Failed to generate cover letter';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (jsonError) {
+          // If we can't parse JSON, use status text
+          errorMessage = response.statusText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
+      // Only try to parse JSON if response is ok
+      const data = await response.json();
       setCoverLetter(data.coverLetter.content);
       setShowPreview(true);
       toast.success('Cover letter generated successfully!');
     } catch (error: any) {
+      console.error('Cover letter generation error:', error);
       toast.error(error.message || 'Failed to generate cover letter');
     } finally {
       setIsGenerating(false);

@@ -221,11 +221,17 @@ const ResumeTips: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         setAnalysis(data.analysis);
-                 toast.success(t('resume.success.analysisCompleted'));
-       } else {
-         const error = await response.json();
-         toast.error(error.message || t('resume.errors.analysisFailed'));
-       }
+        toast.success(t('resume.success.analysisCompleted'));
+      } else {
+        let errorMessage = t('resume.errors.analysisFailed');
+        try {
+          const error = await response.json();
+          errorMessage = error.message || errorMessage;
+        } catch (jsonError) {
+          errorMessage = response.statusText || errorMessage;
+        }
+        toast.error(errorMessage);
+      }
      } catch (error) {
        console.error('Analysis error:', error);
        toast.error(t('resume.errors.analysisFailed'));

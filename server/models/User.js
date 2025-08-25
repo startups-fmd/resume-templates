@@ -176,7 +176,7 @@ userSchema.methods.canUseFeature = function(feature) {
 
   const plan = this.subscription.plan;
   const currentUsage = this.subscription.usage[feature] || 0;
-  const limit = limits[plan][feature];
+  const limit = limits[plan] ? limits[plan][feature] : limits.free[feature];
 
   return currentUsage < limit;
 };
