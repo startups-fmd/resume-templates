@@ -131,7 +131,7 @@ const Signup: React.FC = () => {
 
   const handleGoogleSignup = () => {
     // Redirect to Google OAuth
-    window.location.href = '/api/auth/google';
+    window.location.href = 'https://resume-templates-server.vercel.app/api/auth/google';
   };
 
   const getPasswordStrengthColor = () => {

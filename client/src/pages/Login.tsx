@@ -78,7 +78,7 @@ const Login: React.FC = () => {
 
   const handleGoogleLogin = () => {
     // Redirect to Google OAuth
-    window.location.href = '/api/auth/google';
+    window.location.href = 'https://resume-templates-server.vercel.app/api/auth/google';
   };
 
   return (

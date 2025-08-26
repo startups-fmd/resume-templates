@@ -1,0 +1,31 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/oauth-success",
+      "destination": "/index.html"
+    }
+  ],
+  "functions": {
+    "api/hello.js": {
+      "maxDuration": 10
+    },
+    "api/health.js": {
+      "maxDuration": 10
+    }
+  },
+  "headers": [
+    {
+      "source": "/oauth-success",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
