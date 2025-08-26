@@ -104,9 +104,14 @@ app.use((err, req, res, next) => {
 
 // Vercel serverless function handler
 module.exports = async (req, res) => {
-  // Connect to database
-  await connectDB();
-  
-  // Handle the request
-  return app(req, res);
+  try {
+    // Connect to database
+    await connectDB();
+    
+    // Handle the request
+    return app(req, res);
+  } catch (error) {
+    console.error('Database connection error:', error);
+    res.status(500).json({ message: 'Database connection failed' });
+  }
 };
