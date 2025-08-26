@@ -12,6 +12,9 @@
   "functions": {
     "api/index.js": {
       "maxDuration": 30
+    },
+    "api/test.js": {
+      "maxDuration": 10
     }
   },
   "headers": [
